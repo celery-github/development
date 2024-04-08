@@ -1,0 +1,8 @@
+name: Output infomration
+on: work_flow_dispatch
+jobs: 
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output GitHub context
+        run: echo "{{ toJSON(github) }}"      #this is a data object, we must convert it to some printable text with toJSON function
