@@ -1,63 +1,32 @@
 name: Deploy Project
-
 on: [push, workflow_dispatch]
-
 jobs:
-
   test:               #naming up to you
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Get code
-
         uses: actions/checkout@v4
-
       - name: Install NodeJS
-
         uses: actions/setup-node@v4
-
         with:
-
           node-version: 18
-
       - name: Install dependencies
-
         run: npm ci
-
       - name: Run tets
-
         run: npm test
-
   deploy:             #naming is up to you
-
     needs: test       #waits for test above to be completed, or can mention when multiple jobs are done by [test, job2]
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Get code
-
         uses: actions/checkout@v4
-
       - name: Install NodeJS
-
         uses: actions/setup-node@v4
-
         with:
-
           node-version: 18
-
       - name: Install dependencies
-
         run: npm ci
-
       - name: Build Project
-
         run: npm run build
-
       - name: Deploy
-
         run: echo "Deploying..."    #this is where you have server information, BUT just echoing statement for now
